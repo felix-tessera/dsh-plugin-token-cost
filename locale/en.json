@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Turn cost",
+    "description": "Adds the money cost of each completed answer to the Chat transcript. Under every finished answer, beside the token figures you already see, a line such as ≈ $0.00516 appears; click it to expand the breakdown: input without a cache hit, cached input, and output, each with its rate per million tokens and its amount, plus the model and the peak or off-peak rate that applied when the answer finished. Figures come from the provider-reported token usage of that answer and the published DeepSeek prices, so a turn without exact usage shows no line, exactly like the token row beside it. The amount is an estimate: DeepSeek peak hours (Beijing time, weekdays 09:00-12:00 and 14:00-18:00) are applied at completion time, and Chinese public holidays are not modelled. The plugin sends nothing anywhere and adds no model-visible content. Rates and the display currency live at the top of client.js in the installed package: edit them there if prices change, and set CURRENCY to 'CNY' for yuan.",
+    "detail": "docs/DETAIL.md"
+  }
+}

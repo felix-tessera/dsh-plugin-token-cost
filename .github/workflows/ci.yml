@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Manifests and client smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Manifests parse
+        run: |
+          node -e "for (const f of ['package.json','locale/en.json','locale/ru.json']) { JSON.parse(require('fs').readFileSync(f,'utf8')); console.log('ok ' + f) }"
+      - name: Bundle manifest is installable
+        run: |
+          node -e "const p=require('./package.json'); if(!p.dsh?.bundle?.patch) throw new Error('no dsh.bundle.patch'); if(p.private) throw new Error('package is private'); console.log('bundle ok: ' + p.name + '@' + p.version)"
+      - name: Plugin index parses
+        run: |
+          node -e "const fs=require('fs'); if(!fs.existsSync('site/index.json')) { console.log('no index yet'); process.exit(0) } const i=JSON.parse(fs.readFileSync('site/index.json','utf8')); if(i.format!==1) throw new Error('format'); for(const p of i.plugins) for(const v of p.versions) { if(v.source.type==='git' && !/^[0-9a-f]{40}$/.test(v.source.commit)) throw new Error('bad commit for '+p.name); } console.log('index ok: '+i.plugins.length+' plugins')"
+      - name: Client smoke test
+        run: node .smoke/smoke.js

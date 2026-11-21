@@ -1,0 +1,59 @@
+{
+  "name": "dsh-plugin-token-cost",
+  "version": "1.0.0",
+  "description": "Shows the estimated money cost of each completed answer next to its token usage in the DeepSeek Harness chat.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Felix Tessera",
+  "homepage": "https://github.com/felix-tessera/dsh-plugin-token-cost#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix-tessera/dsh-plugin-token-cost.git"
+  },
+  "bugs": {
+    "url": "https://github.com/felix-tessera/dsh-plugin-token-cost/issues"
+  },
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "cost",
+    "token-usage",
+    "chat"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node .smoke/smoke.js"
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.5 <0.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  }
+}
