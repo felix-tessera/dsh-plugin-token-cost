@@ -1,0 +1,48 @@
+{
+  "format": 1,
+  "title": { "en": "Felix Tessera DSH plugins", "ru": "Плагины Felix Tessera для DSH" },
+  "description": {
+    "en": "Plugins for DeepSeek Harness by Felix Tessera.",
+    "ru": "Плагины для DeepSeek Harness от Felix Tessera."
+  },
+  "metadata": {
+    "categories": {
+      "chat": { "title": { "en": "Chat", "ru": "Чат" } }
+    },
+    "sortKeys": {
+      "github_stars": { "title": { "en": "GitHub stars", "ru": "Звёзды на GitHub" }, "order": "desc" }
+    }
+  },
+  "plugins": [
+    {
+      "name": "dsh-plugin-token-cost",
+      "title": { "en": "Turn cost", "ru": "Стоимость ответа" },
+      "description": {
+        "en": "Adds the estimated money cost of each completed answer to the Chat transcript. Click the line under an answer for the input, cached-input, and output breakdown with per-million rates, the model, and whether the peak or off-peak rate applied. Sends nothing anywhere and adds no model-visible content.",
+        "ru": "Добавляет в ленту чата оценку стоимости каждого готового ответа. Нажмите на строку под ответом, чтобы увидеть разбивку на ввод, ввод из кэша и вывод с ценой за миллион токенов, моделью и признаком пикового или непикового тарифа. Плагин ничего не отправляет наружу и не добавляет ничего видимого модели."
+      },
+      "icon": "icons/token-cost.svg",
+      "author": "Felix Tessera",
+      "homepage": "https://github.com/felix-tessera/dsh-plugin-token-cost#readme",
+      "repository": {
+        "url": "https://github.com/felix-tessera/dsh-plugin-token-cost"
+      },
+      "metadata": {
+        "category": "chat",
+        "sortKeys": { "github_stars": 0 }
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1795291959,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/felix-tessera/dsh-plugin-token-cost",
+            "commit": "4ac0acb21e94e608172e5d9b2c98dd33cc2738ad"
+          },
+          "engines": { "dsh": ">=0.2.2-rc.5 <0.3.0" }
+        }
+      ]
+    }
+  ]
+}
